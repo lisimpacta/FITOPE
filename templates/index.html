@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="container home">
+    <div class="template">
+        <span><img src="{% static 'imagens/logo.png' %}"></span> {% if user.is_anonymous %}
+        <a class="btn btn-primary" href="{% url 'login' %}">Login</a> {% else %}
+        <div class="alert alert-primary" role="alert">
+            <p style="text-align: center"> Olá {{ user.get_full_name }}!</p>
+            <h2 class="testtai"> Selecione o relatório desejado:</h2>
+        </div>
+    </div>
+    <div class="alert alert-secundary relatory" role="alert">
+
+        <a class="btn btn-secundary" href="{% url 'vendas' %}">
+            <img src="{% static 'imagens/vendas.png' %}">Vendas
+        </a>
+        <a class="btn btn-secundary" href="{% url 'financeiro' %}">
+            <img src="{% static 'imagens/financeiro.png' %}">Financeiro
+        </a>
+
+        <a class="btn btn-secundary" href="{% url 'personalizados' %}">
+            <img class="personalizados" src="{% static 'imagens/outros.png' %}">Personalizados
+        </a>
+    </div>
+    <a class="logout" href="{% url 'logout' %}" style="text-align: center;">Logout</a> {% endif %}
+</div>
+{% endblock %}
